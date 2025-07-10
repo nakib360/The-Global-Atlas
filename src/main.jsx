@@ -8,7 +8,8 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <App />,
-      loader: () => fetch("/public/placeholder_images.json"),
+      loader: () => fetch("https://restcountries.com/v3.1/all?fields=name,capital,region,flags"),
+      // loader: () => fetch("/public/placeholder_images.json"),
     }
   ]
 );
