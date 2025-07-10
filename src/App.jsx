@@ -12,7 +12,7 @@ const App = () => {
     setFiltered(matched);
   };
   return (
-    <div className="p-10">
+    <div className="p-10 bg-black ">
       <label className="input w-full">
         <svg
           className="h-[1em] opacity-50"
@@ -38,14 +38,25 @@ const App = () => {
         />
       </label>
 
-      <section>
+      <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 md:px-10 my-5">
         {filtered.length === 0 ? (
-          <p className="text-red-600 italic font-bold py-2">Can't match result</p>
+          <p className="text-red-600 italic font-bold py-2">
+            Can't match result
+          </p>
         ) : (
           filtered.map((Text) => (
-            <p className="py-2 bg-blue-300 my-2 rounded-2xl text-black px-3 font-bold" key={Text.id}>
-              {Text.title}
-            </p>
+            <div className="card bg-base-100 w-full shadow-sm">
+              <figure>
+                <img
+                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                  alt="Shoes"
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{Text.title}</h2>
+                <p>{Text.body}</p>
+              </div>
+            </div>
           ))
         )}
       </section>
