@@ -1,5 +1,6 @@
 import { React, useRef, useState } from "react";
 import { useLoaderData } from "react-router";
+import { TiInfoLargeOutline } from "react-icons/ti";
 
 const App = () => {
   const data = useLoaderData();
@@ -71,6 +72,36 @@ const App = () => {
                     Region: {Country.region}
                   </div>
                 </div>
+                {/* <button className="btn btn-soft">
+                  Details{" "}
+                  <TiInfoLargeOutline className="border rounded-full text-0.5xl" />
+                </button> */}
+
+                {/* Open the modal using document.getElementById('ID').showModal() method */}
+                <button
+                  className="btn btn-soft"
+                  onClick={() =>
+                    document.getElementById("my_modal_1").showModal()
+                  }
+                >
+                  Details{" "}
+                  <TiInfoLargeOutline className="border rounded-full text-0.5xl" />
+                </button>
+                <dialog id="my_modal_1" className="modal">
+                  <div className="modal-box md:max-w-[32rem] max-w-full">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">
+                      Press ESC key or click the button below to close 
+                    </p>
+                    <div className="">
+                      <form method="dialog">
+                        <button className="btn btn-soft btn-error w-full">Close Details</button>
+                      </form>
+                    </div>
+                  </div>
+                </dialog>
+
+
               </div>
             </div>
           ))
