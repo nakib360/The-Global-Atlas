@@ -13,7 +13,7 @@ const App = () => {
         Country.name.common.toLowerCase().includes(searchCountry)
       );
       setFiltered(matched);
-    }, 500);
+    }, 300);
   };
   return (
     <div className="p-3 md:p-10 bg-black min-h-screen">
@@ -58,7 +58,11 @@ const App = () => {
                 />
               </figure>
               <div className="card-body p-2.5">
-                <h2 className="card-title">{Country.name.common === "Israel" ? "Fuck Israel" : Country.name.common }</h2>
+                <h2 className="card-title">
+                  {Country.name.common === "Israel"
+                    ? "Fuck Israel"
+                    : Country.name.common}
+                </h2>
                 <div className="flex gap-2">
                   <div className="badge badge-outline badge-accent font-bold h-full">
                     Capital: {Country.capital}
