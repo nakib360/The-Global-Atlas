@@ -1,6 +1,7 @@
 import { React, useRef, useState } from "react";
 import { useLoaderData } from "react-router";
 import { TiInfoLargeOutline } from "react-icons/ti";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 const App = () => {
   const data = useLoaderData();
@@ -43,17 +44,17 @@ const App = () => {
         />
       </label>
 
-      <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-5 gap-3 md:my-5 my-3">
+      <section className="columns-1 lg:columns-3 md:columns-2 md:gap-5 gap-3 md:my-5 my-3">
         {filtered.length === 0 ? (
           <p className="text-red-600 italic font-bold py-2">
             Can't match country name
           </p>
         ) : (
           filtered.map((Country, idx) => (
-            <div key={idx} className="card bg-base-100 w-full shadow-sm">
+            <div key={idx} className="card bg-base-100 w-full shadow-sm break-inside-avoid mb-4">
               <figure>
                 <img
-                  className="object-cover md:max-h-40 md:min-h-60 w-full"
+                  className="object-cover w-full"
                   src={Country.flags.svg}
                   alt={Country.flags.alt}
                 />
@@ -72,12 +73,6 @@ const App = () => {
                     Region: {Country.region}
                   </div>
                 </div>
-                {/* <button className="btn btn-soft">
-                  Details{" "}
-                  <TiInfoLargeOutline className="border rounded-full text-0.5xl" />
-                </button> */}
-
-                {/* Open the modal using document.getElementById('ID').showModal() method */}
                 <button
                   className="btn btn-soft"
                   onClick={() =>
@@ -89,13 +84,10 @@ const App = () => {
                 </button>
                 <dialog id="my_modal_1" className="modal">
                   <div className="modal-box md:max-w-[32rem] max-w-full">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">
-                      Press ESC key or click the button below to close 
-                    </p>
+                    <p>{Country.name.common}</p>
                     <div className="">
                       <form method="dialog">
-                        <button className="btn btn-soft btn-error w-full">Close Details</button>
+                        <button className="btn btn-soft btn-error w-full">Close Details <RiCloseCircleLine className="text-0.5xl"/></button>
                       </form>
                     </div>
                   </div>
