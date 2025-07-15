@@ -63,28 +63,31 @@ const App = () => {
                 <h2 className="card-title">
                   {Country.name.common === "Israel"
                     ? "Fuck Israel"
-                    : Country.name.common}
+                    : Country.name.common} . {Object.values(Country.name.nativeName || {})[0]?.common}
                 </h2>
-                <div className="flex gap-2">
-                  <div className="badge badge-outline badge-accent font-bold h-full">
-                    Capital: {Country.capital}
-                  </div>
-                  <div className="badge badge-outline badge-accent font-bold h-full">
-                    Region: {Country.region}
-                  </div>
-                </div>
                 <button
                   className="btn btn-soft"
                   onClick={() =>
-                    document.getElementById("my_modal_1").showModal()
+                    document.getElementById(`my_modal_${idx}`).showModal()
                   }
                 >
                   Details{" "}
                   <TiInfoLargeOutline className="border rounded-full text-0.5xl" />
                 </button>
-                <dialog id="my_modal_1" className="modal">
-                  <div className="modal-box md:max-w-[32rem] max-w-full">
-                    <p>{Country.name.common}</p>
+                <dialog id={`my_modal_${idx}`} className="modal">
+                  <div className="modal-box md:max-w-[32rem] max-w-full flex flex-col gap-2">
+                     
+                    <p><span className="text-blue-700 font-bold">Official name</span> : {Country.name.official}</p>
+                    <p><span className="text-blue-700 font-bold">NativeName</span> : {Object.values(Country.name.nativeName || {})[0]?.official || "N/A"}</p>
+                    <p><span className="text-blue-700 font-bold">Explaining The Flag</span> : <span className="text-justify">{Country.flags.alt}</span></p>
+                    <p><span className="text-blue-700 font-bold">Top level domain</span> : <span className="border border-white px-1 bg-gray-800 rounded-[0.3rem]">{Country.tld["0"]}</span></p>
+                    <p><span className="text-blue-700 font-bold">Currency name</span> : {Object.values(Country.currencies || {})[0]?.name} </p>
+                    <p><span className="text-blue-700 font-bold">Currency simble</span> : <span className="border border-white px-1 bg-gray-800 rounded-[0.3rem]">{Object.values(Country.currencies || {})[0]?.symbol}</span></p>
+                    <p><span className="text-blue-700 font-bold">Capital</span> : {Country.capital}</p>
+                    <p><span className="text-blue-700 font-bold">Region</span> : {Country.region}</p>
+                    <p><span className="text-blue-700 font-bold">Languages</span> : {Object.values(Country.languages || {})[0]}</p>
+                    
+
                     <div className="">
                       <form method="dialog">
                         <button className="btn btn-soft btn-error w-full">Close Details <RiCloseCircleLine className="text-0.5xl"/></button>
