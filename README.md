@@ -1,1 +1,1 @@
-[Live link](https://investigate-country.netlify.app/)
+[Live link](https://the-global-atlas.netlify.app/)
